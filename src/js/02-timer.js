@@ -8,7 +8,6 @@ const fieldMinutes = document.querySelector('[data-minutes]');
 const fieldSeconds = document.querySelector('[data-seconds]');
 
 btnStart.setAttribute('disabled', true);
-// let intervalID = null;
 
 flatpickr('input#datetime-picker', {
     enableTime: true,
@@ -37,7 +36,7 @@ flatpickr('input#datetime-picker', {
                 // console.log(deltaTime);
                 const timeComponent = convertMs(deltaTime);
                 updateClockface(timeComponent);
-                console.log(timeComponent);
+                // console.log(timeComponent);
                 if(deltaTime <= 0) {
                     clearInterval(intervalID);
                     fieldDays.textContent = `00`;
