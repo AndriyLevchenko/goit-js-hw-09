@@ -1,4 +1,4 @@
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 // Пошук елементів
 
@@ -10,18 +10,18 @@ const form = document.querySelector('.form');
 // Функція генератора промісів
 
 function createPromise(position, delay) {
-  const promise = new Promise((resolve, reject) => {
+  const promise = new Promise ((resolve, reject) => {
     setTimeout(() => {
       const shouldResolve = Math.random() > 0.3;
       if (shouldResolve) {
-           // Fulfill
-        resolve({ position, delay });
+        // Fulfill
+        resolve ({position, delay})
       } else {
-         // Reject
-        reject({ position, delay });
+        // Reject
+        reject ({position, delay})
       }
-    }, delay);
-  });
+    }, delay)
+  })
   return promise;
 }
 
@@ -36,12 +36,12 @@ form.addEventListener('submit', e => {
   for (let i = 0; i < amount.value; i += 1) {
     createPromise(1 + i, firstDelay + i * stepDelay)
       .then(({ position, delay }) => {
-        Notiflix.Notify.success(
+        Notify.success(
           `✅ Fulfilled promise ${position} in ${delay}ms`
         );
       })
       .catch(({ position, delay }) => {
-        Notiflix.Notify.failure(
+        Notify.failure(
           `❌ Rejected promise ${position} in ${delay}ms`
         );
       });
